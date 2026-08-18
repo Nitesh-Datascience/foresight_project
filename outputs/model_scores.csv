@@ -1,0 +1,3 @@
+Model,WAPE,Bias
+Seasonal Naive,0.9389461650824565,0.109
+Rolling 4-Week Baseline,0.8189343099688803,0.049925
