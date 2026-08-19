@@ -203,43 +203,54 @@ st.markdown("""
     color: #cbd5e1;
 }
 
-
 /* =========================================================
    KPI CARDS
    ========================================================= */
 
 .kpi {
-    background: white;
+    background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 15px;
-    padding: 17px 18px;
-    min-height: 130px;
-    box-shadow: 0 4px 18px rgba(15,23,42,.05);
+    padding: 18px 18px;
+    min-height: 142px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
 }
 
 .kpi-label {
     color: #64748b;
-    font-size: .82rem;
+    font-size: 0.80rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .05em;
-    min-height: 40px;
-    display: flex;
-    align-items: flex-start;
+    letter-spacing: 0.045em;
+    line-height: 1.7;
+    min-height: 43px;
 }
 
 .kpi-value {
     color: #111827;
-    font-size: 1.55rem;
+    font-size: 1.48rem;
     font-weight: 800;
+    line-height: 1.25;
     margin-top: 7px;
+
+    /* Prevent overflow */
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .kpi-note {
     color: #94a3b8;
-    font-size: .76rem;
+    font-size: 0.74rem;
+    line-height: 1.6;
     margin-top: 5px;
+
+    /* Don't break words in ugly places */
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 
