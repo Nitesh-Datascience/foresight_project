@@ -20,50 +20,306 @@ OUT = BASE / "outputs"
 # -----------------------------
 st.markdown("""
 <style>
-    .stApp { background: #f6f8fb; }
-    [data-testid="stSidebar"] { background: #111827; }
-    [data-testid="stSidebar"] * { color: #f9fafb !important; }
 
-    /* Correct readable selectbox text on the dark sidebar */
-    section[data-testid="stSidebar"] [data-baseweb="select"] {
-        background: #f8fafc !important;
-        border-radius: 12px !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] > div {
-        background: #f8fafc !important;
-        color: #111827 !important;
-        border-color: #e2e8f0 !important;
-        border-radius: 12px !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] div,
-    section[data-testid="stSidebar"] [data-baseweb="select"] span,
-    section[data-testid="stSidebar"] [data-baseweb="select"] input {
-        color: #111827 !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] svg {
-        fill: #334155 !important;
-    }
-    [data-baseweb="popover"] { background: #ffffff !important; }
-    [data-baseweb="popover"] *,
-    [data-baseweb="popover"] li { color: #111827 !important; }
-    [data-baseweb="popover"] li:hover { background: #e2e8f0 !important; }
-    .brand { padding: 4px 0 18px 0; }
-    .brand-title { font-size: 2.15rem; font-weight: 800; letter-spacing: .08em; margin: 0; color: #111827; }
-    .brand-subtitle { margin: 2px 0 0 0; color: #64748b; font-size: .95rem; }
-    .hero { background: linear-gradient(135deg, #111827 0%, #1f2937 55%, #334155 100%); border-radius: 18px; padding: 26px 30px; color: white; margin-bottom: 18px; box-shadow: 0 8px 30px rgba(15,23,42,.12); }
-    .hero h1 { margin: 0; font-size: 2rem; letter-spacing: .06em; }
-    .hero p { margin: 7px 0 0 0; color: #cbd5e1; }
-    .kpi { background: white; border: 1px solid #e5e7eb; border-radius: 15px; padding: 17px 18px; min-height: 112px; box-shadow: 0 4px 18px rgba(15,23,42,.05); }
-    .kpi-label { color: #64748b; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
-    .kpi-value { color: #111827; font-size: 1.65rem; font-weight: 800; margin-top: 7px; }
-    .kpi-note { color: #94a3b8; font-size: .76rem; margin-top: 3px; }
-    .section-title { font-size: 1.15rem; font-weight: 800; color: #111827; margin: 14px 0 8px 0; }
-    .insight { background: white; border-left: 4px solid #2563eb; border-radius: 10px; padding: 13px 16px; margin-bottom: 8px; color: #334155; }
-    .action-card { background: white; border-radius: 14px; border: 1px solid #e5e7eb; padding: 15px; }
-    .small-muted { color: #64748b; font-size: .82rem; }
-    div[data-testid="stMetric"] { background: white; border: 1px solid #e5e7eb; border-radius: 14px; padding: 12px; }
-    .stTabs [data-baseweb="tab-list"] { gap: 8px; }
-    .stTabs [data-baseweb="tab"] { font-weight: 700; }
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.stApp {
+    background: #f6f8fb;
+}
+
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+[data-testid="stSidebar"] {
+    background: #111827 !important;
+    min-width: 390px !important;
+    max-width: 390px !important;
+}
+
+[data-testid="stSidebar"] > div:first-child {
+    padding: 24px 18px 30px 18px !important;
+}
+
+/* Sidebar text — DO NOT use [data-testid="stSidebar"] * */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] .stMarkdown {
+    color: #f8fafc !important;
+}
+
+[data-testid="stSidebar"] .stCaption {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   CATEGORY / ACTION SELECTBOX
+   ========================================================= */
+
+[data-testid="stSidebar"] [data-baseweb="select"] {
+    width: 100% !important;
+    min-height: 56px !important;
+    background: #f8fafc !important;
+    border-radius: 12px !important;
+}
+
+[data-testid="stSidebar"] [data-baseweb="select"] > div {
+    min-height: 56px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+}
+
+/* Selected text */
+[data-testid="stSidebar"] [data-baseweb="select"] span {
+    color: #111827 !important;
+    font-weight: 500 !important;
+}
+
+/* Input */
+[data-testid="stSidebar"] [data-baseweb="select"] input {
+    color: #111827 !important;
+    background: transparent !important;
+    caret-color: #111827 !important;
+}
+
+/* Placeholder */
+[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {
+    color: #64748b !important;
+    opacity: 1 !important;
+}
+
+/* Arrow */
+[data-testid="stSidebar"] [data-baseweb="select"] svg {
+    fill: #475569 !important;
+    color: #475569 !important;
+}
+
+/* Selectbox spacing */
+[data-testid="stSidebar"] .stSelectbox {
+    margin-bottom: 18px !important;
+}
+
+[data-testid="stSidebar"] .stSelectbox label {
+    margin-bottom: 7px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   DROPDOWN POPUP
+   ========================================================= */
+
+[data-baseweb="popover"] {
+    background: #ffffff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.20) !important;
+}
+
+[data-baseweb="popover"] [role="option"] {
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 12px 14px !important;
+}
+
+[data-baseweb="popover"] [role="option"]:hover {
+    background: #f1f5f9 !important;
+    color: #111827 !important;
+}
+
+[data-baseweb="popover"] [aria-selected="true"] {
+    background: #e8f0ff !important;
+    color: #1d4ed8 !important;
+    font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+[data-testid="stSidebar"] [data-testid="stCheckbox"] {
+    margin-top: 5px !important;
+    margin-bottom: 20px !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stCheckbox"] label {
+    color: #f8fafc !important;
+    font-size: 15px !important;
+}
+
+
+/* =========================================================
+   SLIDER
+   ========================================================= */
+
+[data-testid="stSidebar"] [data-testid="stSlider"] label {
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #111827 0%,
+        #1f2937 55%,
+        #334155 100%
+    );
+
+    border-radius: 18px;
+    padding: 26px 30px;
+    color: white;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 30px rgba(15,23,42,.12);
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: .06em;
+}
+
+.hero p {
+    margin: 7px 0 0 0;
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
+.kpi {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 17px 18px;
+    min-height: 130px;
+    box-shadow: 0 4px 18px rgba(15,23,42,.05);
+}
+
+.kpi-label {
+    color: #64748b;
+    font-size: .82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    min-height: 40px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.kpi-value {
+    color: #111827;
+    font-size: 1.55rem;
+    font-weight: 800;
+    margin-top: 7px;
+    white-space: nowrap;
+}
+
+.kpi-note {
+    color: #94a3b8;
+    font-size: .76rem;
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.section-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 14px 0 8px 0;
+}
+
+.insight {
+    background: white;
+    border-left: 4px solid #2563eb;
+    border-radius: 10px;
+    padding: 13px 16px;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+.action-card {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    padding: 15px;
+}
+
+.small-muted {
+    color: #64748b;
+    font-size: .82rem;
+}
+
+
+/* =========================================================
+   STREAMLIT METRICS
+   ========================================================= */
+
+div[data-testid="stMetric"] {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DATAFRAME
+   ========================================================= */
+
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.stDownloadButton button {
+    border-radius: 9px !important;
+    font-weight: 700 !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
