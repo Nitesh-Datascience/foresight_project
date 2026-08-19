@@ -1,8 +1,8 @@
+# FORESIGHT dashboard dependencies: streamlit, pandas, numpy, plotly
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import plotly.graph_objects as go
 from pathlib import Path
 
 st.set_page_config(
@@ -23,6 +23,30 @@ st.markdown("""
     .stApp { background: #f6f8fb; }
     [data-testid="stSidebar"] { background: #111827; }
     [data-testid="stSidebar"] * { color: #f9fafb !important; }
+
+    /* Correct readable selectbox text on the dark sidebar */
+    section[data-testid="stSidebar"] [data-baseweb="select"] {
+        background: #f8fafc !important;
+        border-radius: 12px !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+        background: #f8fafc !important;
+        color: #111827 !important;
+        border-color: #e2e8f0 !important;
+        border-radius: 12px !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] div,
+    section[data-testid="stSidebar"] [data-baseweb="select"] span,
+    section[data-testid="stSidebar"] [data-baseweb="select"] input {
+        color: #111827 !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] svg {
+        fill: #334155 !important;
+    }
+    [data-baseweb="popover"] { background: #ffffff !important; }
+    [data-baseweb="popover"] *,
+    [data-baseweb="popover"] li { color: #111827 !important; }
+    [data-baseweb="popover"] li:hover { background: #e2e8f0 !important; }
     .brand { padding: 4px 0 18px 0; }
     .brand-title { font-size: 2.15rem; font-weight: 800; letter-spacing: .08em; margin: 0; color: #111827; }
     .brand-subtitle { margin: 2px 0 0 0; color: #64748b; font-size: .95rem; }
