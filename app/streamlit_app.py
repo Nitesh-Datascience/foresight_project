@@ -417,6 +417,16 @@ for col, (label, value, note) in zip(cols, kpis):
     col.markdown(f'<div class="kpi"><div class="kpi-label">{label}</div><div class="kpi-value">{value}</div><div class="kpi-note">{note}</div></div>', unsafe_allow_html=True)
 
 st.caption(f"Data-driven planning view · Forecast data through {latest_week}")
+def format_rupees(value):
+    value = float(value)
+
+    if abs(value) >= 1_000_000:
+        return f"₹{value / 1_000_000:.2f}M"
+
+    if abs(value) >= 1_000:
+        return f"₹{value / 1_000:.1f}K"
+
+    return f"₹{value:,.0f}"
 
 # -----------------------------
 # Main tabs
