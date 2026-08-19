@@ -204,39 +204,56 @@ st.markdown("""
 }
 
 /* =========================================================
-   KPI CARDS
+   KPI CARDS - FINAL PRESENTATION STYLE
    ========================================================= */
 
 .kpi {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 15px;
-    padding: 18px 18px;
-    min-height: 142px;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    padding: 18px 16px;
+
+    min-height: 145px;
+    height: 145px;
+
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
+
     overflow: hidden;
 }
 
 .kpi-label {
     color: #64748b;
-    font-size: 0.80rem;
-    font-weight: 700;
+
+    font-size: 0.78rem;
+    line-height: 1.55;
+
+    font-weight: 750;
     text-transform: uppercase;
-    letter-spacing: 0.045em;
-    line-height: 1.7;
-    min-height: 43px;
+    letter-spacing: 0.05em;
+
+    min-height: 42px;
+
+    display: flex;
+    align-items: flex-start;
+
+    overflow: hidden;
 }
 
 .kpi-value {
     color: #111827;
-    font-size: 1.48rem;
+
+    font-size: 1.45rem;
+    line-height: 1.2;
+
     font-weight: 800;
-    line-height: 1.25;
+
     margin-top: 7px;
 
-    /* Prevent overflow */
+    /* Never allow value to escape card */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -244,13 +261,17 @@ st.markdown("""
 
 .kpi-note {
     color: #94a3b8;
-    font-size: 0.74rem;
-    line-height: 1.6;
-    margin-top: 5px;
 
-    /* Don't break words in ugly places */
-    word-break: normal;
-    overflow-wrap: break-word;
+    font-size: 0.73rem;
+    line-height: 1.55;
+
+    margin-top: 6px;
+
+    /* Prevent long notes from breaking card */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 
